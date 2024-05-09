@@ -16,7 +16,7 @@ Feature: Je souhaite tester le module Customer
 
   @searshExistedCustomer
   Scenario: Je souhaite chercher un customer
-    When Je saisie l email
+    When Je saisie l email a chercher 
     And Je clique sur le boutton searsh
     Then le costomer s affiche dans le tableu
 

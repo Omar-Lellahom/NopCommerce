@@ -40,6 +40,21 @@ public class CustomerPage {
 	public static WebElement assertMessageAjout;
 	
 	
+	@FindBy(how = How.ID, using = "SearchEmail")
+	public static WebElement email ;
+
+	@FindBy(how = How.ID, using = "search-customers")
+	public static WebElement btnsearch ;
+
+	
+	@FindBy(how = How.XPATH, using = "//td[normalize-space()='omar12344g4.ben.lellahom@gmail.com']")
+	public static WebElement elementTableau ;
+	
+
+	@FindBy(how = How.ID, using = "customers-grid_info")
+	public static WebElement tableauVide ;
+	
+
 	public CustomerPage() {
 		PageFactory.initElements(Setup.driver, this);
 	}
