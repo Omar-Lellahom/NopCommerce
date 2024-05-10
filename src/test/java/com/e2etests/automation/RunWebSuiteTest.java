@@ -9,7 +9,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 @CucumberOptions(
 		features = {"src/spec/features"},
 		plugin = {"pretty","html:target/cucumber-repport.html","json:target/cucumber-repport.json"},
-		tags = "@searshNotExistedCustomer",
+		tags = "@edit",
 		//glue = {"com.e2etests.automation.step_definitions" },
 		monochrome = true,
 		snippets = CAMELCASE

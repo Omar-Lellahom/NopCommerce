@@ -28,16 +28,16 @@ Feature: Je souhaite tester le module Customer
 
   @editCustomer
   Scenario: Je souahait modifer les informations d un costomer
-    When Je saisie l email
+    When Je saisie l email a chercher 
     And Je clique sur le boutton searsh
     And Je clique sur le boutton edit
     And Je modifer les informations souhaiter
-    And Je clique sur le boutton save
+    And Je clique sur le buton save
     Then un message de mise a jour sera afiicher
 
   @DeleteCustomer
   Scenario: Je souhaite chercher un customer
-    When Je saisie l email
+    When Je saisie l email a chercher
     And Je clique sur le boutton searsh
     And Je clique sur le boutton edit
     And Je clique sur le boutton delete

@@ -54,7 +54,24 @@ public class CustomerPage {
 	@FindBy(how = How.ID, using = "customers-grid_info")
 	public static WebElement tableauVide ;
 	
+	@FindBy(how = How.XPATH, using = "	//a[normalize-space()='Edit']")
+	public static WebElement editbtn ;
 
+	@FindBy(how = How.XPATH, using = "//div[@class='alert alert-success alert-dismissable']")
+	public static WebElement assertMessageUpadte;
+	
+
+	@FindBy(how = How.ID, using = "customer-delete")
+	public static WebElement btnDelete;
+	
+	@FindBy(how = How.XPATH, using = "	//div[@class='alert alert-success alert-dismissable']")
+	public static WebElement assertMessageDelete;
+	
+	@FindBy(how = How.XPATH, using = "	//button[normalize-space()='Delete']")
+	public static WebElement btntDeletePop;
+	
+	
+	
 	public CustomerPage() {
 		PageFactory.initElements(Setup.driver, this);
 	}

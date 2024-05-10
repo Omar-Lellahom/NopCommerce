@@ -1,5 +1,6 @@
 package com.e2etests.automation.step_definitions;
 
+import java.time.Duration;
 import java.util.Random;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -82,8 +83,7 @@ public class CustomerStepDefinition {
 	@Then("un message  d ajout s affiche")
 	public void unMessageDAjoutSAffiche() {
 
-		validations.assertTrue(customerPage.assertMessageAjout,
-				configFileReader.getProperties("customer.ajoutMessageAssert"));
+		validations.assertTrue(customerPage.assertMessageAjout,configFileReader.getProperties("customer.ajoutMessageAssert"));
 
 	}
 
@@ -96,14 +96,13 @@ public class CustomerStepDefinition {
 	@When("Je clique sur le boutton searsh")
 	public void jeCliqueSurLeBouttonSearsh() {
 		seleniumUtils.click(customerPage.btnsearch);
-		((JavascriptExecutor)Setup.getDriver()).executeScript("window.scrollBy(0,700)", "");
+		((JavascriptExecutor) Setup.getDriver()).executeScript("window.scrollBy(0,700)", "");
 	}
 
 	@Then("le costomer s affiche dans le tableu")
 	public void leCostomerSAfficheDansLeTableu() {
-		
-    validations.assertEquals(customerPage.elementTableau,configFileReader.getProperties("customer.email"));
-		
+		wait.forElementToBeDisplayed(Duration.ofSeconds(20), customerPage.elementTableau, "NAN");
+		validations.assertEquals(customerPage.elementTableau, configFileReader.getProperties("customer.email"));
 
 	}
 
@@ -115,43 +114,44 @@ public class CustomerStepDefinition {
 
 	@Then("un tableau s affiche vide")
 	public void unTableauSAfficheVide() throws InterruptedException {
-		Thread.sleep(2000);
-    validations.assertTrue(customerPage.tableauVide, configFileReader.getProperties("customer.msg"));
+		wait.forElementToBeDisplayed(Duration.ofSeconds(20), customerPage.tableauVide, "NAN");
+		validations.assertTrue(customerPage.tableauVide, configFileReader.getProperties("customer.msg"));
 	}
 
 	@When("Je clique sur le boutton edit")
 	public void jeCliqueSurLeBouttonEdit() {
+		seleniumUtils.click(customerPage.editbtn);
 
 	}
 
 	@When("Je modifer les informations souhaiter")
 	public void jeModiferLesInformationsSouhaiter() {
+		seleniumUtils.writeText(customerPage.Email, random.getSaltString());
 
 	}
 
-	@When("Je clique sur le boutton save")
-	public void jeCliqueSurLeBouttonSave() {
-
-	}
 
 	@Then("un message de mise a jour sera afiicher")
 	public void unMessageDeMiseAJourSeraAfiicher() {
-
+		wait.forElementToBeDisplayed(Duration.ofSeconds(20), customerPage.assertMessageUpadte, "nan");
+        validations.assertTrue(customerPage.assertMessageUpadte, configFileReader.getProperties("dachbord.updateCust"));
 	}
 
 	@When("Je clique sur le boutton delete")
 	public void jeCliqueSurLeBouttonDelete() {
+		seleniumUtils.click(customerPage.btnDelete);
 
 	}
 
 	@When("Je clique sur alert delete")
 	public void jeCliqueSurAlertDelete() {
-
+		wait.forElementToBeDisplayed(Duration.ofSeconds(20), customerPage.btntDeletePop,"nan");
+    seleniumUtils.click(customerPage.btntDeletePop);
 	}
 
 	@Then("un message delete customer s affiche")
 	public void unMessageDeleteCustomerSAffiche() {
-
+     validations.assertTrue(customerPage.assertMessageDelete,configFileReader.getProperties("dachbord.deletCust"));
 	}
 
 }
